@@ -3,16 +3,18 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 
+from com.sun.dushen.common import utils
+
 url = 'http://datachart.500.com/dlt/history/newinc/history.php?start=03001&end=99999&sort=1'
 
 
 def run():
     data = agent()
-    writeCsv(data)
+    write(data)
 
 
 def agent():
-    r"""dlt."""
+    r"""agent dlt data. """
 
     r = requests.get(url)
     html = BeautifulSoup(r.text, 'lxml')
@@ -25,7 +27,7 @@ def agent():
             # 期号
             'no': td[1].text,
             # 开奖日期
-            'date': td[15].text,
+            'date': td[15].text.replace("-", ''),
             # 红球号码(5)[1-35]
             'red1': td[2].text,
             'red2': td[3].text,
@@ -91,10 +93,11 @@ def agent():
     return result
 
 
-def writeCsv(body):
+def write(body):
+    r"""create dlt data csv. """
 
     # name of csv file
-    filename = "../../../../dlt.csv"
+    filename = utils.resources_path() + r'\data\dlt.csv'
 
     # field names
     fields = ['no', 'date', 'red1', 'red2', 'red3', 'red4', 'red5', 'blue1', 'blue2',
