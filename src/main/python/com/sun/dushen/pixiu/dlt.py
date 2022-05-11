@@ -23,6 +23,10 @@ def agent():
 
     result = []
     for item in tr:
+
+        red = utils.randoms(35, 5)
+        blue = utils.randoms(12, 2)
+
         td = item.contents
         data = {
             # 期号
@@ -39,11 +43,11 @@ def agent():
             'blue1': td[7].text,
             'blue2': td[8].text,
             # 红球号码(5)[1-35]
-            'dummy_red1': random.sample(range(1, 36), 1),
-            'dummy_red2': random.sample(range(1, 36), 1),
-            'dummy_red3': random.sample(range(1, 36), 1),
-            'dummy_red4': random.sample(range(1, 36), 1),
-            'dummy_red5': random.sample(range(1, 36), 1),
+            'dummy_red1': red[0],
+            'dummy_red2': red[1],
+            'dummy_red3': red[2],
+            'dummy_red4': red[3],
+            'dummy_red5': red[4],
             # 'dummy_red6': 6,
             # 'dummy_red7': 7,
             # 'dummy_red8': 8,
@@ -75,8 +79,8 @@ def agent():
             # 'dummy_red34': 34,
             # 'dummy_red35': 35,
             # 蓝球号码(2)[1-12]
-            'dummy_blue1': random.sample(range(1, 13), 1),
-            'dummy_blue2': random.sample(range(1, 13), 1),
+            'dummy_blue1': blue[0],
+            'dummy_blue2': blue[1],
             # 'dummy_blue3': 3,
             # 'dummy_blue4': 4,
             # 'dummy_blue5': 5,
@@ -98,7 +102,7 @@ def write(body):
     r"""create dlt data csv. """
 
     # name of csv file
-    filename = utils.resources_path() + r'\data\dlt.csv'
+    filename = utils.resources_path() + r'/data/dlt.csv'
 
     # field names
     fields = ['no', 'date', 'red1', 'red2', 'red3', 'red4', 'red5', 'blue1', 'blue2',
