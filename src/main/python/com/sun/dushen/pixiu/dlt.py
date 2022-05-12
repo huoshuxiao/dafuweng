@@ -1,5 +1,4 @@
 import csv
-import random
 
 import requests
 from bs4 import BeautifulSoup
@@ -24,8 +23,8 @@ def agent():
     result = []
     for item in tr:
 
-        red = utils.randoms(35, 5)
-        blue = utils.randoms(12, 2)
+        # red = utils.randoms(35, 5)
+        # blue = utils.randoms(12, 2)
 
         td = item.contents
         data = {
@@ -43,11 +42,11 @@ def agent():
             'blue1': td[7].text,
             'blue2': td[8].text,
             # 红球号码(5)[1-35]
-            'dummy_red1': red[0],
-            'dummy_red2': red[1],
-            'dummy_red3': red[2],
-            'dummy_red4': red[3],
-            'dummy_red5': red[4],
+            # 'dummy_red1': red[0],
+            # 'dummy_red2': red[1],
+            # 'dummy_red3': red[2],
+            # 'dummy_red4': red[3],
+            # 'dummy_red5': red[4],
             # 'dummy_red6': 6,
             # 'dummy_red7': 7,
             # 'dummy_red8': 8,
@@ -79,8 +78,8 @@ def agent():
             # 'dummy_red34': 34,
             # 'dummy_red35': 35,
             # 蓝球号码(2)[1-12]
-            'dummy_blue1': blue[0],
-            'dummy_blue2': blue[1],
+            # 'dummy_blue1': blue[0],
+            # 'dummy_blue2': blue[1],
             # 'dummy_blue3': 3,
             # 'dummy_blue4': 4,
             # 'dummy_blue5': 5,
@@ -106,11 +105,11 @@ def write(body):
 
     # field names
     fields = ['no', 'date', 'red1', 'red2', 'red3', 'red4', 'red5', 'blue1', 'blue2',
-              'dummy_red1', 'dummy_red2', 'dummy_red3', 'dummy_red4', 'dummy_red5', #'dummy_red6', 'dummy_red7', 'dummy_red8', 'dummy_red9', 'dummy_red10',
+              # 'dummy_red1', 'dummy_red2', 'dummy_red3', 'dummy_red4', 'dummy_red5', #'dummy_red6', 'dummy_red7', 'dummy_red8', 'dummy_red9', 'dummy_red10',
               # 'dummy_red11', 'dummy_red12', 'dummy_red13', 'dummy_red14', 'dummy_red15', 'dummy_red16', 'dummy_red17', 'dummy_red18', 'dummy_red19', 'dummy_red20',
               # 'dummy_red21', 'dummy_red22', 'dummy_red23', 'dummy_red24', 'dummy_red25', 'dummy_red26', 'dummy_red27', 'dummy_red28', 'dummy_red29', 'dummy_red30',
               # 'dummy_red31', 'dummy_red32', 'dummy_red33', 'dummy_red34', 'dummy_red35',
-              'dummy_blue1', 'dummy_blue2', #'dummy_blue3', 'dummy_blue4', 'dummy_blue5', 'dummy_blue6', 'dummy_blue7', 'dummy_blue8', 'dummy_blue9', 'dummy_blue10',
+              # 'dummy_blue1', 'dummy_blue2', #'dummy_blue3', 'dummy_blue4', 'dummy_blue5', 'dummy_blue6', 'dummy_blue7', 'dummy_blue8', 'dummy_blue9', 'dummy_blue10',
               # 'dummy_blue11', 'dummy_blue12'
               ]
 
