@@ -8,3 +8,4 @@ from com.sun.dushen.pixiu import ssq, dlt
 # l_model.ssq('22053', '20220512')
 
 probability.dlt()
+probability.ssq()
