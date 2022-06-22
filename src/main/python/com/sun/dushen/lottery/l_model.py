@@ -7,7 +7,7 @@ from sklearn import linear_model
 
 
 def ssq(no, date):
-    print("双色球", no, date, "红球", random.sample(range(1, 34), 6), "篮球", random.sample(range(1, 17), 1))
+    print("双色球", no, date, "红球")#, random.sample(range(1, 34), 6), "篮球", random.sample(range(1, 17), 1))
 
     filename = utils.resources_path() + r'/data/ssq.csv'
     df = pandas.read_csv(filename)
@@ -79,7 +79,7 @@ def ssq(no, date):
 
 
 def dlt(no, date):
-    print("大乐透", no, date, "红球", random.sample(range(1, 36), 5), "篮球", random.sample(range(1, 13), 2))
+    print("大乐透", no, date)#, "红球", random.sample(range(1, 36), 5), "篮球", random.sample(range(1, 13), 2))
 
     filename = utils.resources_path() + r'/data/dlt.csv'
     df = pandas.read_csv(filename)

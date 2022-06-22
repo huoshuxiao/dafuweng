@@ -4,8 +4,8 @@ from com.sun.dushen.pixiu import ssq, dlt
 # ssq.run()
 # dlt.run()
 
-l_model.dlt(22058, 20220525)
-l_model.ssq(22053, 20220512)
-
 probability.dlt()
+l_model.dlt(22070, 20220622)
+
 probability.ssq()
+l_model.ssq(22071, 20220623)
