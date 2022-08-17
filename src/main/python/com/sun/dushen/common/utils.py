@@ -14,4 +14,4 @@ def resources_path():
 
 
 def randoms(scope, count):
-    return random.sample(range(1, scope + 1), count + 1)
+    return random.sample(range(1, scope + 1), count)
