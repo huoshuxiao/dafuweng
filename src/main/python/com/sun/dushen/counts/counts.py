@@ -1,3 +1,6 @@
+# 计算中奖号码的随机次数，生成随机号码
+
+
 from com.sun.dushen.common import utils
 
 

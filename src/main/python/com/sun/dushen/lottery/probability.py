@@ -1,3 +1,6 @@
+# 号码概率
+
+
 import pandas
 
 from com.sun.dushen.common import utils
@@ -49,14 +52,17 @@ def ssq():
     red = df['red1'].to_list() + df['red2'].to_list() + df['red3'].to_list() + df['red4'].to_list() + df['red5'].to_list() + df['red6'].to_list()
     counts = len(df['red1'].to_list())
 
+    # k:号码, v:概率
     red_probability = dict()
-    # cal
+    # 计算号码概率
     for i in range(1, 34):
         red_probability.setdefault(i, red.count(i) / counts)
 
+    # 概率列表
     red_values = list(red_probability.values())
     for s in sorted(red_values, reverse=True):
         for k, v in red_probability.items():
+            # 概率相同时，移除出现的概率数据。
             if s == v:
                 print(v, k)
                 red_probability.pop(k)
