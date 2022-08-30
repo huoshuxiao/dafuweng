@@ -6,7 +6,7 @@ from com.sun.dushen.common import utils
 
 def ssq(bonuses):
     for bonus in bonuses:
-        # print(bonus)
+        print(bonus)
         do = True
         i = 0
         while do:
@@ -32,7 +32,7 @@ def ssq(bonuses):
 
 def dlt(bonuses):
     for bonus in bonuses:
-        # print(bonus)
+        print(bonus)
         do = True
         i = 0
         while do:
