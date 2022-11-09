@@ -15,3 +15,16 @@ def resources_path():
 
 def randoms(scope, count):
     return random.sample(range(1, scope + 1), count)
+
+
+# return string randoms
+def randoms_s(scope, count):
+    r = random.sample(range(1, scope + 1), count)
+    result = []
+    for i in r:
+        if i < 10:
+            result.append(str(i).zfill(2))
+        else:
+            result.append(str(i))
+
+    return result
