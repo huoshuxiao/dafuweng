@@ -1,38 +1,10 @@
-import datetime
+import sys
 
-from com.sun.dushen.lottery import l_model, probability
-from com.sun.dushen.pixiu import ssq, dlt
-from com.sun.dushen.counts import counts
+from com.sun.dushen.model import model
+from com.sun.dushen.pixiu import pixiu
 
-# ssq.run()
-# dlt.run()
+args = sys.argv[1:]
+if args[0] == 'NOT-SKIP' or len(args) == 0:
+    pixiu.run()
 
-
-weekday_dlt = [1, 3, 6, 5]
-weekday_ssq = [2, 4, 7, 5]
-
-date = datetime.date
-today = date.today()
-weekday = today.isoweekday()
-
-if weekday in weekday_dlt:
-    l_model.dlt(22128, 20221109)
-    probability.dlt()
-    counts.dlt2One([
-        '02,20,28,29,30,07,10',
-        '02,04,11,25,30,06,12',
-        '03,07,14,16,19,01,11',
-        '04,05,08,22,35,01,03',
-        '02,03,08,09,20,04,10',
-    ])
-
-if weekday in weekday_ssq:
-    l_model.ssq(22129, 20221110)
-    probability.ssq()
-    counts.ssq2One([
-        '05,10,13,18,24,26,01',
-        '02,03,07,12,20,31,16',
-        '01,13,15,17,26,33,13',
-        '03,04,09,10,29,33,13',
-        '03,12,18,24,27,29,01',
-    ])
+model.run()
