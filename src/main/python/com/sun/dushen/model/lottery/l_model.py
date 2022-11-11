@@ -1,21 +1,17 @@
 # 多元回归
 
 
-import random
-
-import pandas
+from sklearn import linear_model
 
 from com.sun.dushen.common import utils
-from sklearn import linear_model
 
 
 def ssq(no, date):
     print("双色球", no, date)#, "红球", random.sample(range(1, 34), 6), "篮球", random.sample(range(1, 17), 1))
 
-    filename = utils.resources_path() + r'/data/ssq.csv'
-    df = pandas.read_csv(filename)
+    df = utils.read_csv_data('ssq')
 
-    # r'option 1'
+    # r"""option 1"""
     # # X = df[['no', 'date',
     # #         'dummy_red1', 'dummy_red1', 'dummy_red3', 'dummy_red4', 'dummy_red5', 'dummy_red6', #'dummy_red7', 'dummy_red8', 'dummy_red9', 'dummy_red10',
     # #         # 'dummy_red11', 'dummy_red12', 'dummy_red13', 'dummy_red14', 'dummy_red15', 'dummy_red16', 'dummy_red17', 'dummy_red18', 'dummy_red19', 'dummy_red20',
@@ -59,7 +55,7 @@ def ssq(no, date):
     #             #     dfd['dummy_blue1'][k] = utils.randoms(16, 1)[0]
     #             # df = dfd
 
-    r'option 2'
+    r"""option 2"""
 
     X = df[['no', 'date']]
     for i in ['red1', 'red2', 'red3', 'red4', 'red5', 'red6']:
@@ -84,10 +80,9 @@ def ssq(no, date):
 def dlt(no, date):
     print("大乐透", no, date)#, "红球", random.sample(range(1, 36), 5), "篮球", random.sample(range(1, 13), 2))
 
-    filename = utils.resources_path() + r'/data/dlt.csv'
-    df = pandas.read_csv(filename)
+    df = utils.read_csv_data('dlt')
 
-    # r'option 1'
+    # r"""option 1"""
     # X = df[['no', 'date',
     #         'dummy_red1', 'dummy_red1', 'dummy_red3', 'dummy_red4', 'dummy_red5', #'dummy_red6', 'dummy_red7', 'dummy_red8', 'dummy_red9', 'dummy_red10',
     #         # 'dummy_red11', 'dummy_red12', 'dummy_red13', 'dummy_red14', 'dummy_red15', 'dummy_red16', 'dummy_red17', 'dummy_red18', 'dummy_red19', 'dummy_red20',
@@ -122,7 +117,7 @@ def dlt(no, date):
     #
     #     print(i, blue, ml.coef_)
 
-    r'option 2'
+    r"""option 2"""
 
     X = df[['no', 'date']]
     for i in ['red1', 'red2', 'red3', 'red4', 'red5']:

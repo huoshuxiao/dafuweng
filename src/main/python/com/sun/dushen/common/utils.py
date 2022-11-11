@@ -1,6 +1,8 @@
 import os
 import random
 
+import pandas
+
 
 def root():
     r"""get main directory ."""
@@ -11,6 +13,11 @@ def resources_path():
     r"""get resources directory ."""
 
     return root() + r'/resources'
+
+
+def read_csv_data(file_name):
+    filename = resources_path() + r'/data/{}.csv'.format(file_name)
+    return pandas.read_csv(filename)
 
 
 def randoms(scope, count):

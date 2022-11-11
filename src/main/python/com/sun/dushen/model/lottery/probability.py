@@ -1,14 +1,11 @@
 # 号码概率
 
 
-import pandas
-
 from com.sun.dushen.common import utils
 
 
 def dlt():
-    filename = utils.resources_path() + r'/data/dlt.csv'
-    df = pandas.read_csv(filename)
+    df = utils.read_csv_data('dlt')
 
     print("大乐透", "红球 5")
     red = df['red1'].to_list() + df['red2'].to_list() + df['red3'].to_list() + df['red4'].to_list() + df['red5'].to_list()
@@ -44,12 +41,11 @@ def dlt():
 
 
 def ssq():
-
-    filename = utils.resources_path() + r'/data/ssq.csv'
-    df = pandas.read_csv(filename)
+    df = utils.read_csv_data('ssq')
 
     print("双色球", "红球 6")
-    red = df['red1'].to_list() + df['red2'].to_list() + df['red3'].to_list() + df['red4'].to_list() + df['red5'].to_list() + df['red6'].to_list()
+    red = df['red1'].to_list() + df['red2'].to_list() + df['red3'].to_list() + df['red4'].to_list() + df[
+        'red5'].to_list() + df['red6'].to_list()
     counts = len(df['red1'].to_list())
 
     # k:号码, v:概率
