@@ -9,7 +9,7 @@ args = sys.argv[1:]
       0: 爬虫用
       1: 模型用
 """
-if args[0] == 'NOT-SKIP' or len(args) == 0:
+if args[0] == 'RUN' or len(args) == 0:
     pixiu.run()
 
 if len(args) == 1:
