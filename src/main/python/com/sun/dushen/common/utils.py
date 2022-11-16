@@ -6,7 +6,8 @@ import pandas
 
 def root():
     r"""get main directory ."""
-    return os.path.abspath(r'../../../..')
+    r = os.path.dirname(os.path.abspath(__file__ + r'../../../../../..'))
+    return r
 
 
 def resources_path():
