@@ -54,6 +54,7 @@ def ssq2One(bonuses):
         b = ','.join(str(s) for s in sorted(utils.randoms(16, 1), reverse=False))
         t = r + ',' + b
     print(t)
+    return t
 
 
 # 进N出N
@@ -106,3 +107,4 @@ def dlt2One(bonuses):
         b = ','.join(str(s) for s in sorted(utils.randoms(12, 2), reverse=False))
         t = r + ',' + b
     print(t)
+    return t
