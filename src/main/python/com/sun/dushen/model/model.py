@@ -7,6 +7,8 @@ from com.sun.dushen.model.counts import counts
 # https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
 FORMAT_DATE = '%Y%m%d'
 
+bonus_count = 0
+
 
 def run(count=5):
     """ count : default foreach 5 counts """
@@ -23,7 +25,7 @@ def run(count=5):
             today = today + datetime.timedelta(days=1)
         l_model.dlt(no, int(today.strftime(FORMAT_DATE)))
 
-        probability.dlt()
+        # probability.dlt()
 
         red1 = df['red1'].to_list()
         red1.reverse()
@@ -46,7 +48,13 @@ def run(count=5):
             data.append(','.join(row))
 
         data.reverse()
-        counts.dlt2One(data)
+        bonus = counts.dlt2One(data)
+
+        if '2,27,30,34,35,9,12' == bonus:
+            print(globals()['bonus_count'], '::', bonus)
+        else:
+            globals()['bonus_count'] = globals()['bonus_count'] + 1
+            run(count)
 
     today = datetime.date.today()
     weekday = today.isoweekday()
@@ -57,7 +65,7 @@ def run(count=5):
             today = today + datetime.timedelta(days=2)
         l_model.ssq(no, int(today.strftime(FORMAT_DATE)))
 
-        probability.ssq()
+        # probability.ssq()
 
         red1 = df['red1'].to_list()
         red1.reverse()
@@ -80,4 +88,9 @@ def run(count=5):
             data.append(','.join(row))
 
         data.reverse()
-        counts.ssq2One(data)
+        bonus = counts.ssq2One(data)
+        if '5,8,16,17,21,25,12' == bonus:
+            print(globals()['bonus_count'], '::', bonus)
+        else:
+            globals()['bonus_count'] = globals()['bonus_count'] + 1
+            run(count)
