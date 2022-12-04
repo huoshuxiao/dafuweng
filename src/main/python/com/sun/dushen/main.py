@@ -15,4 +15,4 @@ if args[0] == 'RUN' or len(args) == 0:
 if len(args) == 1:
     model.run()
 else:
-    model.run(int(args[1]))
+    model.run_ssq2(int(args[1]))
