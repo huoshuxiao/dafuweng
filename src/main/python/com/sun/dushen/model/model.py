@@ -7,7 +7,7 @@ from com.sun.dushen.model.counts import counts
 # https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
 FORMAT_DATE = '%Y%m%d'
 
-bonus_count = 0
+bonus_count = 1
 
 
 def run(count=5):
@@ -124,9 +124,11 @@ def run_ssq2(count):
 
 def do_ssq_bonus(data):
     bonus = counts.ssq2One(data)
+    print('run counts', datetime.datetime.now().isoformat(timespec='seconds'), globals()['bonus_count'])
+
     # TODO
     if '5,8,16,17,21,25,12' == bonus:
-        print('cal bonus counts', globals()['bonus_count'], '::', bonus)
+        print('Winning', globals()['bonus_count'], '::', bonus)
     else:
         globals()['bonus_count'] = globals()['bonus_count'] + 1
         do_ssq_bonus(data)
