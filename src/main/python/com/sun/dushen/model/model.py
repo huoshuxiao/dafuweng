@@ -26,8 +26,11 @@ def run_dlt(count):
         no = max(df['no'].to_list()) + 1
         if weekday == 5:
             today = today + datetime.timedelta(days=1)
+
+        # 概率
         l_model.dlt(no, int(today.strftime(FORMAT_DATE)))
 
+        # 多元回归
         probability.dlt()
 
         red1 = df['red1'].to_list()
@@ -49,8 +52,9 @@ def run_dlt(count):
         for i in range(0, count):
             row = [str(red1[i]), str(red2[i]), str(red3[i]), str(red4[i]), str(red5[i]), str(blue1[i]), str(blue2[i])]
             data.append(','.join(row))
-
         data.reverse()
+
+        # 随机次数
         counts.dlt2One(data)
 
 
@@ -64,8 +68,11 @@ def run_ssq(count):
         no = max(df['no'].to_list()) + 1
         if weekday == 5:
             today = today + datetime.timedelta(days=2)
+
+        # 概率
         l_model.ssq(no, int(today.strftime(FORMAT_DATE)))
 
+        # 多元回归
         probability.ssq()
 
         red1 = df['red1'].to_list()
@@ -87,8 +94,9 @@ def run_ssq(count):
         for i in range(0, count):
             row = [str(red1[i]), str(red2[i]), str(red3[i]), str(red4[i]), str(red5[i]), str(red6[i]), str(blue1[i])]
             data.append(','.join(row))
-
         data.reverse()
+
+        # 随机次数
         counts.ssq2One(data)
 
 
@@ -117,12 +125,13 @@ def run_ssq2(count):
     for i in range(0, count):
         row = [str(red1[i]), str(red2[i]), str(red3[i]), str(red4[i]), str(red5[i]), str(red6[i]), str(blue1[i])]
         data.append(','.join(row))
-
     data.reverse()
-    do_ssq_bonus(data)
+
+    # 随机次数
+    counts_bonus_ssq(data)
 
 
-def do_ssq_bonus(data):
+def counts_bonus_ssq(data):
     bonus = counts.ssq2One(data)
     print('run counts', datetime.datetime.now().isoformat(timespec='seconds'), globals()['bonus_count'])
 
@@ -131,4 +140,4 @@ def do_ssq_bonus(data):
         print('Winning', globals()['bonus_count'], '::', bonus)
     else:
         globals()['bonus_count'] = globals()['bonus_count'] + 1
-        do_ssq_bonus(data)
+        counts_bonus_ssq(data)
