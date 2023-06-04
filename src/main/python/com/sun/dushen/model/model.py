@@ -3,11 +3,17 @@ import datetime
 from com.sun.dushen.common import utils
 from com.sun.dushen.model.lottery import probability, l_model
 from com.sun.dushen.model.counts import counts
+from com.sun.dushen.model.similarity import similarity
 
 # https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
 FORMAT_DATE = '%Y%m%d'
 
 bonus_count = 1
+
+
+def run_similarity():
+    similarity.run()
+    # l_model.ssq_score()
 
 
 def run(count=5):
@@ -27,10 +33,10 @@ def run_dlt(count):
         if weekday == 5:
             today = today + datetime.timedelta(days=1)
 
-        # 概率
+        # 多元回归
         l_model.dlt(no, int(today.strftime(FORMAT_DATE)))
 
-        # 多元回归
+        # 概率
         probability.dlt()
 
         red1 = df['red1'].to_list()
@@ -69,10 +75,10 @@ def run_ssq(count):
         if weekday == 5:
             today = today + datetime.timedelta(days=2)
 
-        # 概率
+        # 多元回归
         l_model.ssq(no, int(today.strftime(FORMAT_DATE)))
 
-        # 多元回归
+        # 概率
         probability.ssq()
 
         red1 = df['red1'].to_list()
@@ -128,16 +134,17 @@ def run_ssq2(count):
     data.reverse()
 
     # 随机次数
-    counts_bonus_ssq(data)
+    return do_ssq_bonus(data)
 
 
-def counts_bonus_ssq(data):
+def do_ssq_bonus(data):
     bonus = counts.ssq2One(data)
     print('run counts', datetime.datetime.now().isoformat(timespec='seconds'), globals()['bonus_count'])
 
     # TODO
-    if '5,8,16,17,21,25,12' == bonus:
-        print('Winning', globals()['bonus_count'], '::', bonus)
-    else:
-        globals()['bonus_count'] = globals()['bonus_count'] + 1
-        counts_bonus_ssq(data)
+    # if '5,8,16,17,21,25,12' == bonus:
+    print('Winning', globals()['bonus_count'], '::', bonus)
+    # else:
+    #     globals()['bonus_count'] = globals()['bonus_count'] + 1
+    #     do_ssq_bonus(data)
+    return bonus
