@@ -8,7 +8,7 @@ from com.sun.dushen.model import model
 
 
 def run():
-    # 分析用
+    # 分析用(临时)
     # ssq()
     # ssq2()
     # 出球
