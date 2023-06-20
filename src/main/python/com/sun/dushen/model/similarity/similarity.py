@@ -4,6 +4,7 @@ import datetime
 import pandas as pd
 
 from com.sun.dushen.common import utils
+from com.sun.dushen.common.consts import FORMAT_DATE
 from com.sun.dushen.model import model
 
 
@@ -133,7 +134,7 @@ def ssq3():
 
     # 出球号码
     bonus = model.run_ssq2(len(red1))
-    lastDate = datetime.date.today().strftime(model.FORMAT_DATE)
+    lastDate = datetime.date.today().strftime(FORMAT_DATE)
 
     redData = []
     blueData = []

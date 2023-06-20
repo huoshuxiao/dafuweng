@@ -23,6 +23,8 @@ if len(args) == 2 and int(args[1]) > 0:
         # 指定随机数模型
         model.run_ssq2(int(args[1]))
 
-# 相似度模型
-model.run_similarity()
+# # 相似度模型
+# model.run_similarity()
+# TODO
+model.run_count()
 

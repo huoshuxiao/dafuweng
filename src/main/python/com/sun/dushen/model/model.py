@@ -1,14 +1,14 @@
 import datetime
 
 from com.sun.dushen.common import utils
+from com.sun.dushen.common.consts import FORMAT_DATE
 from com.sun.dushen.model.lottery import probability, l_model
 from com.sun.dushen.model.counts import counts
 from com.sun.dushen.model.similarity import similarity
 
-# https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
-FORMAT_DATE = '%Y%m%d'
 
-bonus_count = 1
+def run_count():
+    counts.run_ssq_count()
 
 
 def run_similarity():
