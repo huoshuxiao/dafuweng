@@ -1,18 +1,17 @@
 # 计算中奖号码的随机次数，生成随机号码
 import csv
-import datetime
 import math
 import os
 import threading
+from datetime import datetime
 from concurrent import futures
 
-from com.sun.dushen.common import utils
-from com.sun.dushen.common import consts
+from com.sun.dushen.common import consts, utils
 
 
 def run_ssq_count():
-    thread_count = os.cpu_count() * 4
     df = utils.read_csv_data('ssq')
+    thread_count = os.cpu_count() + 1
     data_split_size = math.ceil(len(df) / thread_count)
 
     body = []
@@ -67,9 +66,6 @@ def sub_ssq(start, end, df):
 # 中奖号码的随机次数
 def ssq_count(bonuses):
     for bonus in bonuses:
-        print('thread name :: {}, time :: {}, bonus :: {}'.format(threading.current_thread().name,
-                                                                  datetime.date.today().strftime(consts.FORMAT_TIME),
-                                                                  bonus))
         i = 0
         do = True
         while do:
@@ -79,9 +75,11 @@ def ssq_count(bonuses):
             t = r + ',' + b
             if bonus == t:
                 do = False
+
+        print('thread name :: {}, time :: {}, bonus :: {}, count :: {}'.format(threading.current_thread().name,
+                                                                               datetime.now().time().strftime(consts.FORMAT_TIME),
+                                                                               bonus, i))
         return i
-        # time.sleep(utils.randoms(10, 1)[0])
-        # return utils.randoms(9999, 1)[0]
 
 
 # 根据随机次数开奖
