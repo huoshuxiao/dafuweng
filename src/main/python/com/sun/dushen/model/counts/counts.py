@@ -11,7 +11,7 @@ from com.sun.dushen.common import consts, utils
 
 def run_ssq_count():
     df = utils.read_csv_data('ssq')
-    thread_count = os.cpu_count() + 1
+    thread_count = len(df)#os.cpu_count() + 1
     data_split_size = math.ceil(len(df) / thread_count)
 
     body = []
