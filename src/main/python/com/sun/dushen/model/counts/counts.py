@@ -84,6 +84,7 @@ def ssq_count(bonuses):
 
 # 根据随机次数开奖
 def do_ssq_bonus(i):
+    t = ''
     while i > 0:
         i = i - 1
         r = ','.join(str(s) for s in sorted(utils.randoms(33, 6), reverse=False))
@@ -107,6 +108,7 @@ def ssq(bonuses):
                 do = False
         print(i)
 
+        t = ''
         while i > 0:
             i = i - 1
             r = ','.join(str(s) for s in sorted(utils.randoms(33, 6), reverse=False))
@@ -175,6 +177,7 @@ def dlt(bonuses):
                 do = False
         print(i)
 
+        t = ''
         while i > 0:
             i = i - 1
             r = ','.join(str(s) for s in sorted(utils.randoms(35, 5), reverse=False))
