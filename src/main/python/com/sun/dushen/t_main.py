@@ -15,7 +15,7 @@ def main():
     if len(args) == 0 or args[0] == 'RUN':
         pixiu.run()
 
-    # 随机数模型
+    # 计算 随机数模型
     df = utils.read_csv_data('ssq')
     thread_count = (os.cpu_count() + 1) * 2
     data_split_size = math.ceil(len(df) / thread_count)
