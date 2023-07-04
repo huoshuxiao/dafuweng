@@ -1,12 +1,15 @@
 import datetime
 
+from com.sun.dushen.analysis import similarity
 from com.sun.dushen.common import utils
 from com.sun.dushen.common.consts import FORMAT_DATE
 from com.sun.dushen.model.lottery import probability, l_model, counts
 
 
 def temp_run():
-    run_ssq3(1)
+    similarity.run()
+
+    # run_ssq3(1)
 
 
 def run(count=5):

@@ -1,18 +1,13 @@
 # 相似度 分析
-
-import datetime
-
 import pandas as pd
 
 from com.sun.dushen.common import utils
-from com.sun.dushen.common.consts import FORMAT_DATE
-from com.sun.dushen.model import model
 
 
 def run():
     # 分析用(临时)
     # ssq()
-    # ssq2()
+    ssq2()
 
 
 # 全量（每期相似度）
@@ -63,6 +58,7 @@ def ssq():
             result.append(data)
 
     utils.write_csv('ssq_similarity', ['date', 'current', 'pool', 'score', '_date'], result)
+    print(pd.DataFrame.from_records(result)['score'].value_counts())
 
 
 # 最新（最新一起与之前数据的相似度）
@@ -89,7 +85,6 @@ def ssq2():
         blueData.append(','.join(row))
 
     result = []
-    # 现有号码(最后一期)相似度
     i = len(redData)
     redText1Array = redData[0:i]
     blueText1Array = blueData[0:i]
@@ -114,7 +109,8 @@ def ssq2():
         }
         result.append(data)
 
-    utils.write_csv('ssq_similarity{}'.format(lastDate), ['date', 'current', 'pool', 'score', '_date'], result)
+    # utils.write_csv('ssq_similarity{}'.format(lastDate), ['date', 'current', 'pool', 'score', '_date'], result)
+    print(pd.DataFrame.from_records(result)['score'].value_counts())
 
 
 # Jaccard相似度通过计算两个集合之间的交集和并集之间的比率来衡量相似性。

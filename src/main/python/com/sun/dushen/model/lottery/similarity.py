@@ -1,4 +1,4 @@
-# 相似度 分析
+# 相似度
 
 import datetime
 
@@ -56,7 +56,7 @@ def run(count):
         }
         result.append(data)
 
-    utils.write_csv('ssq_similarity{}'.format(count), ['date', 'current', 'pool', 'score', '_date'], result)
+    # utils.write_csv('ssq_similarity{}'.format(count), ['date', 'current', 'pool', 'score', '_date'], result)
     # score 分布计算
     print(pd.DataFrame.from_records(result)['score'].value_counts())
 
