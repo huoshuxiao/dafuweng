@@ -3,8 +3,8 @@ import os
 import sys
 from concurrent import futures
 
+from com.sun.dushen.analysis import counts
 from com.sun.dushen.common import utils
-from com.sun.dushen.model.counts import counts
 from com.sun.dushen.pixiu import pixiu
 
 args = sys.argv[1:]
@@ -16,7 +16,7 @@ def main():
         pixiu.run()
 
     # 计算 随机数模型
-    df = utils.read_csv_data('ssq')
+    df = utils.read_csv('ssq')
     thread_count = (os.cpu_count() + 1) * 2
     data_split_size = math.ceil(len(df) / thread_count)
 
@@ -27,6 +27,10 @@ def main():
             end = data_split_size * i + data_split_size
             if end > len(df):
                 end = len(df)
+
+            # 越界退出
+            if end <= data_split_size * i:
+                return                
 
             f = executor.submit(counts.sub_ssq, data_split_size * i, end, df)
             fs.append(f)
@@ -47,7 +51,7 @@ def main():
             }
             body.append(row)
 
-    counts.write_counts('ssq', ['no', 'date', 'red1', 'red2', 'red3', 'red4', 'red5', 'red6', 'blue1', 'count'], body)
+    utils.write_csv('ssq', ['no', 'date', 'red1', 'red2', 'red3', 'red4', 'red5', 'red6', 'blue1', 'count'], body)
 
 
 if __name__ == '__main__':

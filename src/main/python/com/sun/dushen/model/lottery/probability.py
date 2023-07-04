@@ -5,7 +5,7 @@ from com.sun.dushen.common import utils
 
 
 def dlt():
-    df = utils.read_csv_data('dlt')
+    df = utils.read_csv('dlt')
 
     print("大乐透", "红球 5")
     red = df['red1'].to_list() + df['red2'].to_list() + df['red3'].to_list() + df['red4'].to_list() + df['red5'].to_list()
@@ -41,7 +41,7 @@ def dlt():
 
 
 def ssq():
-    df = utils.read_csv_data('ssq')
+    df = utils.read_csv('ssq')
 
     print("双色球", "红球 6")
     red = df['red1'].to_list() + df['red2'].to_list() + df['red3'].to_list() + df['red4'].to_list() + df['red5'].to_list() + df['red6'].to_list()

@@ -1,50 +1,30 @@
 # 多元回归
-
-
+import numpy
 from sklearn import linear_model
 
 from com.sun.dushen.common import utils
 
 
-def ssq_score():
-    df = utils.read_csv_data('ssq_similarity')
-    print(df['score'].value_counts())
+def ssq_count(no, date):
+    print("双色球", no, date)
 
-    # df = utils.read_csv_data('ssq_similarity')
-    # X = df[['date', 'pool_1', 'pool_2', 'pool_3', 'pool_4', 'pool_5', 'pool_6', 'pool_7']]
-    # for i in ['current_1', 'current_2', 'current_3', 'current_4', 'current_5', 'current_6', 'current_7', 'score']:
-    #     y = df[i]
-    #
-    #     ml = linear_model.LinearRegression()
-    #     ml.fit(X, y)
-    #     red = ml.predict(X)
-    #     print(i, red, ml.coef_)
-    #
-    # df = utils.read_csv_data('ssq_similarity')
-    # X = df[['date', 'score']]
-    # for i in ['pool_1', 'pool_2', 'pool_3', 'pool_4', 'pool_5', 'pool_6', 'pool_7']:
-    #     y = df[i]
-    #
-    #     ml = linear_model.LinearRegression()
-    #     ml.fit(X, y)
-    #     red = ml.predict(X)
-    #     print(i, red, ml.coef_)
-    #
-    # df = utils.read_csv_data('ssq_similarity')
-    # X = df[['pool_date']]
-    # for i in ['score']:
-    #     y = df[i]
-    #
-    #     ml = linear_model.LinearRegression()
-    #     ml.fit(X, y)
-    #     red = ml.predict(X)
-    #     print(i, red, ml.coef_)
+    df = utils.read_csv('count_ssq')
+
+    X = df[['no', 'date']]
+    for i in ['count']:
+        y = df[i]
+
+        ml = linear_model.LinearRegression()
+        ml.fit(X, y)
+        ball = ml.predict(X)
+
+        print(i, numpy.average(ball), ml.coef_)
 
 
 def ssq(no, date):
     print("双色球", no, date)#, "红球", random.sample(range(1, 34), 6), "篮球", random.sample(range(1, 17), 1))
 
-    df = utils.read_csv_data('ssq')
+    df = utils.read_csv('ssq')
 
     # r"""option 1"""
     # # X = df[['no', 'date',
@@ -115,7 +95,7 @@ def ssq(no, date):
 def dlt(no, date):
     print("大乐透", no, date)#, "红球", random.sample(range(1, 36), 5), "篮球", random.sample(range(1, 13), 2))
 
-    df = utils.read_csv_data('dlt')
+    df = utils.read_csv('dlt')
 
     # r"""option 1"""
     # X = df[['no', 'date',

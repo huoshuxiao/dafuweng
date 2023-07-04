@@ -1,3 +1,4 @@
+import csv
 import os
 import random
 
@@ -15,9 +16,24 @@ def resources_path():
     return root() + r'/resources'
 
 
-def read_csv_data(file_name):
+def read_csv(file_name):
     filename = resources_path() + r'/data/{}.csv'.format(file_name)
     return pandas.read_csv(filename)
+
+
+def write_csv(file_name, file_fields, body):
+    r"""create ssq data csv. """
+
+    # name of csv file
+    filename = resources_path() + r'/data/{}.csv'.format(file_name)
+
+    # field names
+    fields = file_fields
+
+    with open(filename, 'w') as csvfile:
+        writer = csv.DictWriter(csvfile, fields)
+        writer.writeheader()
+        writer.writerows(body)
 
 
 def randoms(scope, count):
