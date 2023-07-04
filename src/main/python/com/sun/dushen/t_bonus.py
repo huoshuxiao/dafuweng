@@ -4,6 +4,7 @@ from com.sun.dushen.model.lottery import similarity
 
 
 def main():
+    # TODO
     count = [8749216, 18080715]
     with futures.ProcessPoolExecutor(len(count)) as executor:
         fs = []

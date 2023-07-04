@@ -1,1 +1,4 @@
 .idea/
+src/main/python/com/sun/*/__pycache__/
+src/main/python/com/sun/*/*/__pycache__/
+src/main/python/com/sun/*/*/*/__pycache__/

@@ -2,13 +2,11 @@ import datetime
 
 from com.sun.dushen.common import utils
 from com.sun.dushen.common.consts import FORMAT_DATE
-from com.sun.dushen.model.lottery import probability, l_model, counts, similarity
+from com.sun.dushen.model.lottery import probability, l_model, counts
 
 
 def temp_run():
-    # run_ssq(1)
-    similarity.run(8749216)
-    similarity.run(18080715)
+    run_ssq3(1)
 
 
 def run(count=5):
@@ -18,7 +16,6 @@ def run(count=5):
 
 
 def run_dlt(count):
-
     bonus_weekday = [1, 3, 6, 5]
     today = datetime.date.today()
     weekday = today.isoweekday()
@@ -60,7 +57,6 @@ def run_dlt(count):
 
 
 def run_ssq(count):
-
     bonus_weekday = [2, 4, 7, 5]
     today = datetime.date.today()
     weekday = today.isoweekday()
@@ -74,31 +70,31 @@ def run_ssq(count):
         l_model.ssq_count(no, int(today.strftime(FORMAT_DATE)))
 
         # 概率
-        # probability.ssq()
-        #
-        # red1 = df['red1'].to_list()
-        # red1.reverse()
-        # red2 = df['red2'].to_list()
-        # red2.reverse()
-        # red3 = df['red3'].to_list()
-        # red3.reverse()
-        # red4 = df['red4'].to_list()
-        # red4.reverse()
-        # red5 = df['red5'].to_list()
-        # red5.reverse()
-        # red6 = df['red6'].to_list()
-        # red6.reverse()
-        # blue1 = df['blue1'].to_list()
-        # blue1.reverse()
-        #
-        # data = []
-        # for i in range(0, count):
-        #     row = [str(red1[i]), str(red2[i]), str(red3[i]), str(red4[i]), str(red5[i]), str(red6[i]), str(blue1[i])]
-        #     data.append(','.join(row))
-        # data.reverse()
-        #
-        # # 随机次数
-        # counts.ssq2One(data)
+        probability.ssq()
+
+        red1 = df['red1'].to_list()
+        red1.reverse()
+        red2 = df['red2'].to_list()
+        red2.reverse()
+        red3 = df['red3'].to_list()
+        red3.reverse()
+        red4 = df['red4'].to_list()
+        red4.reverse()
+        red5 = df['red5'].to_list()
+        red5.reverse()
+        red6 = df['red6'].to_list()
+        red6.reverse()
+        blue1 = df['blue1'].to_list()
+        blue1.reverse()
+
+        data = []
+        for i in range(0, count):
+            row = [str(red1[i]), str(red2[i]), str(red3[i]), str(red4[i]), str(red5[i]), str(red6[i]), str(blue1[i])]
+            data.append(','.join(row))
+        data.reverse()
+
+        # 随机次数
+        counts.ssq2One(data)
 
 
 def run_ssq2(count):
@@ -143,3 +139,17 @@ def do_ssq_bonus(data):
     #     globals()['bonus_count'] = globals()['bonus_count'] + 1
     #     do_ssq_bonus(data)
     return bonus
+
+
+def run_ssq3(count):
+    bonus_weekday = [2, 4, 7, 5]
+    today = datetime.date.today()
+    weekday = today.isoweekday()
+    if weekday in bonus_weekday:
+        df = utils.read_csv('ssq')
+        no = max(df['no'].to_list()) + 1
+        if weekday == 5:
+            today = today + datetime.timedelta(days=2)
+
+        # 多元回归
+        l_model.ssq_count(no, int(today.strftime(FORMAT_DATE)))
