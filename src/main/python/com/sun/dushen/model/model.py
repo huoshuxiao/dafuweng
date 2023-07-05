@@ -1,15 +1,16 @@
 import datetime
 
+from com.sun.dushen.analysis import counts as a_counts
 from com.sun.dushen.analysis import similarity
 from com.sun.dushen.common import utils
 from com.sun.dushen.common.consts import FORMAT_DATE
 from com.sun.dushen.model.lottery import probability, l_model, counts
 
 
-def temp_run():
+def temp_analysis():
     similarity.run()
-
-    # run_ssq3(1)
+    a_counts.ssq_count(['3,4,15,18,19,22,9'])
+    run_ssq3(1)
 
 
 def run(count=5):
@@ -145,14 +146,7 @@ def do_ssq_bonus(data):
 
 
 def run_ssq3(count):
-    bonus_weekday = [2, 4, 7, 5]
-    today = datetime.date.today()
-    weekday = today.isoweekday()
-    if weekday in bonus_weekday:
-        df = utils.read_csv('ssq')
-        no = max(df['no'].to_list()) + 1
-        if weekday == 5:
-            today = today + datetime.timedelta(days=2)
-
-        # 多元回归
-        l_model.ssq_count(no, int(today.strftime(FORMAT_DATE)))
+    df = utils.read_csv('ssq')
+    no = max(df['no'].to_list()) + 1
+    # 多元回归
+    l_model.ssq_count(no, int(datetime.date.today().strftime(FORMAT_DATE)))

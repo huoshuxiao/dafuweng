@@ -109,7 +109,7 @@ def ssq2():
         }
         result.append(data)
 
-    # utils.write_csv('ssq_similarity{}'.format(lastDate), ['date', 'current', 'pool', 'score', '_date'], result)
+    utils.write_csv('ssq_similarity{}'.format(lastDate), ['date', 'current', 'pool', 'score', '_date'], result)
     print(pd.DataFrame.from_records(result)['score'].value_counts())
 
 
