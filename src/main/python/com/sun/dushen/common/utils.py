@@ -30,7 +30,7 @@ def write_csv(file_name, file_fields, body):
     # field names
     fields = file_fields
 
-    with open(filename, 'w') as csvfile:
+    with open(filename, 'w', encoding="utf-8", newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fields)
         writer.writeheader()
         writer.writerows(body)

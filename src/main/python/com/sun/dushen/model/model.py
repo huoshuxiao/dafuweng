@@ -4,13 +4,24 @@ from com.sun.dushen.analysis import counts as a_counts
 from com.sun.dushen.analysis import similarity
 from com.sun.dushen.common import utils
 from com.sun.dushen.common.consts import FORMAT_DATE
+from com.sun.dushen.data import fruit
 from com.sun.dushen.model.lottery import probability, l_model, counts
 
 
-def temp_analysis():
-    similarity.run()
-    a_counts.ssq_count(['3,4,15,18,19,22,9'])
-    run_ssq3(1)
+def test():
+    fruit.run_ssq()
+
+
+def run_analysis():
+    # # step 1
+    # """ 最新一期相似度 """
+    # last_data = similarity.run()
+    # """ 最新一期 随机次数 """
+    # a_counts.ssq_count([last_data])
+
+    # step 2
+    """ 多元回归 随机次数 """
+    run_ssq_count()
 
 
 def run(count=5):
@@ -145,7 +156,7 @@ def do_ssq_bonus(data):
     return bonus
 
 
-def run_ssq3(count):
+def run_ssq_count():
     df = utils.read_csv('ssq')
     no = max(df['no'].to_list()) + 1
     # 多元回归

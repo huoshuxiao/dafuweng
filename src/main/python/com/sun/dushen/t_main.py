@@ -10,6 +10,7 @@ from com.sun.dushen.pixiu import pixiu
 args = sys.argv[1:]
 
 
+# 全量
 def main():
     # 爬数据
     if len(args) == 0 or args[0] == 'RUN':

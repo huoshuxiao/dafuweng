@@ -7,7 +7,7 @@ from com.sun.dushen.common import utils
 def run():
     # 分析用(临时)
     # ssq()
-    ssq2()
+    return ssq2()
 
 
 # 全量（每期相似度）
@@ -61,7 +61,7 @@ def ssq():
     print(pd.DataFrame.from_records(result)['score'].value_counts())
 
 
-# 最新（最新一起与之前数据的相似度）
+# 最新（最新一期与之前数据的相似度）
 def ssq2():
     df = utils.read_csv('ssq')
     red1 = df['red1'].to_list()
@@ -92,7 +92,7 @@ def ssq2():
     redText2 = redData[i - 1]
     blueText2 = blueData[i - 1]
     lastDate = date[i - 1]
-
+    last_data = ''
     # 计算相似度
     for j in range(0, len(redText1Array) - 1):
         text1 = redText1Array[j] + ',B' + blueText1Array[j]
@@ -108,9 +108,11 @@ def ssq2():
             '_date': date[j],
         }
         result.append(data)
+        last_data = data['current']
 
     utils.write_csv('ssq_similarity{}'.format(lastDate), ['date', 'current', 'pool', 'score', '_date'], result)
     print(pd.DataFrame.from_records(result)['score'].value_counts())
+    return last_data
 
 
 # Jaccard相似度通过计算两个集合之间的交集和并集之间的比率来衡量相似性。
