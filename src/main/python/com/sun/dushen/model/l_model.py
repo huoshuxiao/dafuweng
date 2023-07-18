@@ -10,7 +10,7 @@ def ssq_count(no, date):
 
     df = utils.read_csv('count_ssq')
 
-    X = df[['no', 'date']]
+    X = df[['no', 'date', 'red1', 'red2', 'red3', 'red4', 'red5', 'red6', 'blue1']]
     for i in ['count']:
         y = df[i]
 

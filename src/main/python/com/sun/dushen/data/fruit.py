@@ -2,7 +2,7 @@
 
 from com.sun.dushen.common import utils
 
-row_template = '水果店{}销售额为{}元，其中苹果{}份，香蕉{}份，橘子{}份，橙子{}份，西瓜{}份，哈密瓜{}份，桃子{}份'
+row_template = '水果店{}销售额为{}元，其中苹果{}份，香蕉{}份，橘子{}份，橙子{}份，西瓜{}份，哈密瓜{}份，桃子{}份。\n\n###\n\n'
 
 
 def run_ssq():

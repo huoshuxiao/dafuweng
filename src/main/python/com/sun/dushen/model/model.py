@@ -5,7 +5,8 @@ from com.sun.dushen.analysis import similarity
 from com.sun.dushen.common import utils
 from com.sun.dushen.common.consts import FORMAT_DATE
 from com.sun.dushen.data import fruit
-from com.sun.dushen.model.lottery import probability, l_model, counts
+from com.sun.dushen.model.lottery import probability, counts
+from com.sun.dushen.model import l_model
 
 
 def test():
@@ -13,15 +14,15 @@ def test():
 
 
 def run_analysis():
-    # # step 1
-    # """ 最新一期相似度 """
-    # last_data = similarity.run()
-    # """ 最新一期 随机次数 """
-    # a_counts.ssq_count([last_data])
+    # step 1
+    """ 最新一期相似度 """
+    last_data = similarity.run()
+    """ 最新一期 随机次数 """
+    a_counts.ssq_count([last_data])
 
-    # step 2
-    """ 多元回归 随机次数 """
-    run_ssq_count()
+    # # step 2
+    # """ 多元回归 随机次数 """
+    # run_ssq_count()
 
 
 def run(count=5):

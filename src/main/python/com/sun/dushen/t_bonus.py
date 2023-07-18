@@ -4,17 +4,20 @@ from com.sun.dushen.model.lottery import similarity
 
 
 def main():
-    # TODO
-    # count = [8749216, 18080715]
-    count = [8484692, 18077073]
-    with futures.ProcessPoolExecutor(len(count)) as executor:
-        fs = []
-        for i in range(0, len(count)):
-            f = executor.submit(similarity.run, count[i])
-            fs.append(f)
 
-        for f in futures.as_completed(fs):
-            f.result()
+    for i in range(0, 50):
+        # TODO
+        # count = [8749216, 18080715]
+        # count = [2603036]
+        count = [8514388, 18031868]
+        with futures.ProcessPoolExecutor(len(count)) as executor:
+            fs = []
+            for i in range(0, len(count)):
+                f = executor.submit(similarity.run, count[i])
+                fs.append(f)
+
+            for f in futures.as_completed(fs):
+                f.result()
 
 
 if __name__ == '__main__':

@@ -25,4 +25,4 @@ if len(args) == 2 and int(args[1]) > 0:
 
 
 # TODO
-model.temp_analysis()
+model.run_analysis()
