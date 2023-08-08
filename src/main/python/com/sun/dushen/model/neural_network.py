@@ -1,4 +1,7 @@
+import logging.config
+
 import numpy
+import yaml
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.neural_network import MLPRegressor
 from sklearn.preprocessing import StandardScaler
@@ -39,9 +42,10 @@ def run():
     # model = MLPRegressor(hidden_layer_sizes=(100, 100), random_state=100)
 
     # TODO 验证模型参数
-    for i in range(1, 10000):
-        for j in range(1, 10000):
-            for k in range(1, 10000):
+    z = 10000
+    for i in range(1, z):
+        for j in range(1, z):
+            for k in range(1, z):
                 # 创建神经网络模型
                 model = MLPRegressor(hidden_layer_sizes=(i, j), random_state=k)
 
@@ -53,7 +57,7 @@ def run():
                 mean_score = -scores.mean()
 
                 # 打印均方误差（MSE）或均方根误差（RMSE）
-                print("Mean Squared Error: {}, {} {} {}".format(mean_score, i, j, k))
+                logger.debug('{}, {} {} {}'.format(mean_score, i, j, k))
 
     # # 训练模型
     # model.fit(X_train, y_train)
@@ -63,4 +67,13 @@ def run():
     # print("推荐号码:", recommended_numbers)
 
 
+# 加载 YAML 配置文件
+with open(utils.resources_path() + '/logging.yaml', 'r') as file:
+    config = yaml.safe_load(file)
+
+# 配置 logging 模块
+logging.config.dictConfig(config)
+
+# 创建日志记录器
+logger = logging.getLogger('dushen')
 run()
