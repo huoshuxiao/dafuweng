@@ -42,10 +42,15 @@ def run():
     # model = MLPRegressor(hidden_layer_sizes=(100, 100), random_state=100)
 
     # TODO 验证模型参数
-    z = 10000
-    for i in range(1, z):
-        for j in range(1, z):
-            for k in range(1, z):
+    z = 70
+    t = 60
+    for i in range(z, 0, -1):
+        for j in range(z, 0, -1):
+            for k in range(z, 0, -1):
+
+                if i <= t and j <= t and k <= t:
+                    continue
+
                 # 创建神经网络模型
                 model = MLPRegressor(hidden_layer_sizes=(i, j), random_state=k)
 
@@ -57,7 +62,7 @@ def run():
                 mean_score = -scores.mean()
 
                 # 打印均方误差（MSE）或均方根误差（RMSE）
-                logger.debug('{}, {} {} {}'.format(mean_score, i, j, k))
+                logger.debug('mean_score :: {}, {} {} {}'.format(mean_score, i, j, k))
 
     # # 训练模型
     # model.fit(X_train, y_train)
